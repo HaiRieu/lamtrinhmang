@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.UUID;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
@@ -89,9 +90,8 @@ public class client extends JFrame {
 		
 		JButton jbutton_dangnhap = new JButton("Đăng Nhập");
 		jbutton_dangnhap.addActionListener(new ActionListener() {
-		
-
 			public void actionPerformed(ActionEvent e) {
+			// XỬ LÍ ĐĂNG NHẬP Ở ĐÂY
 			 cardLayout.show(contentPane, "trangchu");
 			
 			}
@@ -154,6 +154,13 @@ public class client extends JFrame {
 		jbutton_dangky1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		jbutton_dangky1.setBounds(449, 486, 132, 35);
 		panel_dangky.add(jbutton_dangky1);
+		jbutton_dangky1.addActionListener(new ActionListener() {
+			// XỬ LÝ LOGIC ĐĂNG KÝ
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cardLayout.show(contentPane, "trangchu");
+			}
+		});
 		
 		 panel_client = new JPanel();
 		contentPane.add(panel_client, "trangchu");
@@ -177,9 +184,10 @@ public class client extends JFrame {
 		JButton jbutton_vaophong = new JButton("Vào Phòng");
 		jbutton_vaophong.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 
-				String clientName = "Client_" + (clients.size() + 1);
-	                addClient(clientName);
+				
+				// LOGIC XỬ LÝ VÀO PHÒNG
+//				String clientName = "Client_" + (clients.size() + 1);
+//	                addClient(clientName);
 				
 				cardLayout.show(contentPane, "client");
 				
@@ -193,6 +201,9 @@ public class client extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//LOGIC XỬ LÝ TẠO PHÒNG
+				String roomId = UUID.randomUUID().toString().split("-")[0];
+				System.out.println(roomId);
 			}
 		});
 		btnNewButton.setBounds(515, 392, 128, 34);
@@ -223,9 +234,17 @@ public class client extends JFrame {
 		JButton jbutton_gui = new JButton("Gửi");
 		jbutton_gui.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// LOGIC XỬ LÝ TIN NHẮN REALTIME - JAVA WEBSOCkET
+//				-javax.websocket
+//				-org.projectlombok
+//				-jsonpp
 				
-				 String clientName = "Client_" + (clients.size() + 1);
-	                addClient(clientName);
+				
+				// Cai nay cua chatgpt
+//				 String clientName = "Client_" + (clients.size() + 1);
+//	                addClient(clientName);
+				
+				
 			}
 		});
 		jbutton_gui.setBounds(674, 388, 85, 21);
@@ -248,7 +267,6 @@ public class client extends JFrame {
 	        clientLabel.setPreferredSize(new Dimension(LABEL_WIDTH, LABEL_HEIGHT)); // Kích thước cố định 3cm x 3cm
 	        clientLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK)); // Tạo viền để dễ nhìn thấy kích thước
 
-	        // Thêm label vào panel và cập nhật giao diện
 	        panel_lable.add(clientLabel);
 	        panel_lable.revalidate();
 	        panel_lable.repaint();
